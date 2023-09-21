@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  margin: 2rem;
+}
+
+.btns-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  gap: 20px;
+}
+
+.btn {
+  width: 150px;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #72a4f0;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 90vh;
+  border-radius: 15px;
+  background: #e53b3b;
+  flex-shrink: 0;
+  border: 2px solid #000;
+  margin: 0 auto;
+}
+
+.grid {
+  width: 97%;
+  height: 94%;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+}
+
+/*
+--------------------- BreakPoints ---------------------
+
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV
+*/
