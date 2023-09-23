@@ -12,38 +12,61 @@ const grid = document.querySelector(".grid");
 const gridRow = document.createElement("div");
 const gridColumn = document.createElement("div");
 
-gridColumn.append(gridRow);
+sizeBtn.addEventListener("click", gridSize);
+
+// gridColumn.append(gridRow);
 gridColumn.style.display = "flex";
 
 grid.append(gridColumn);
 
-let size;
+let size = 64;
+createGridSize();
+
 function gridSize() {
   size = prompt("Enter grid size");
   while (size > 100) {
     size = prompt("Highest grid size is 100!");
   }
+  createGridSize();
 }
 
-gridSize();
-
-let divHeight = 550 / size;
-let divWidth = 1000 / size;
-
-const div = document.createElement("div");
-div.style.backgroundColor = "#72a4f0";
-div.style.border = `2px solid black`;
-div.style.width = `${divWidth}px`;
-div.style.height = `${divHeight}px`;
+let isRightMouseDown = false;
 
 function createGridSize() {
+  gridColumn.innerHTML = "";
+  gridRow.innerHTML = "";
+  let divHeight = 550 / size;
+  let divWidth = 550 / size;
+  let div = document.createElement("div");
+  div.style.width = `${divWidth}px`;
+  div.style.height = `${divHeight}px`;
+
   for (let i = 0; i < size; i++) {
     gridRow.append(div.cloneNode(true));
   }
-
-  for (let j = 0; j < size - 1; j++) {
+  for (let j = 0; j < size; j++) {
     gridColumn.appendChild(gridRow.cloneNode(true));
   }
+
+  gridColumn.addEventListener("mousedown", (event) => {
+    if (event.button === 0) {
+      isRightMouseDown = true;
+      event.preventDefault();
+    }
+  });
+
+  gridColumn.addEventListener("mouseup", () => {
+    isRightMouseDown = false;
+  });
+
+  gridColumn.addEventListener("mousemove", (event) => {
+    if (isRightMouseDown) {
+      event.target.style.backgroundColor = colorPicker.value;
+    }
+  });
 }
 
-createGridSize();
+function changeCellColor(event) {
+  const cell = event.target;
+  cell.style.backgroundColor = colorPicker.value;
+}
