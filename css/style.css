@@ -14,7 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 60%;
+  width: 20%;
   gap: 20px;
 }
 
@@ -46,12 +46,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 600px;
+  width: 80%;
   height: 90vh;
   border-radius: 15px;
-  background: #e53b3b;
+  /* background: #e53b3b; */
   flex-shrink: 0;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
   margin: 0 auto;
 }
 
@@ -61,6 +61,14 @@ body {
   height: 550px;
   background-color: #d9d9d9;
   border-radius: 10px;
+  margin: 1rem auto;
+}
+
+.container {
+  width: 57%;
+  margin: 0 auto;
+  background: #e53b3b;
+  border-radius: 15px;
 }
 
 .grid-row {

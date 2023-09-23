@@ -2,7 +2,7 @@ const colorPicker = document.querySelector("input[type=color]");
 const colorBtn = document.querySelector("input[value=Color]");
 const colorValue = colorPicker.value;
 const raindowBtn = document.querySelector("input[value=Rainbow]");
-const eraserBtn = document.querySelector("input[value=Eraser]");
+const eraseBtn = document.querySelector("input[value=Eraser]");
 const clearBtn = document.querySelector("input[value=Clear]");
 const sizeBtn = document.querySelector("input[value=Size]");
 
@@ -38,6 +38,7 @@ function createGridSize() {
   let divHeight = 550 / size;
   let divWidth = 550 / size;
   let div = document.createElement("div");
+  div.classList.add("clone");
   div.style.width = `${divWidth}px`;
   div.style.height = `${divHeight}px`;
 
@@ -48,25 +49,72 @@ function createGridSize() {
     gridColumn.appendChild(gridRow.cloneNode(true));
   }
 
-  gridColumn.addEventListener("mousedown", (event) => {
+  color(gridColumn);
+}
+
+function changeCellColor(event) {
+  const cell = event.target;
+  cell.style.backgroundColor = colorPicker.value;
+}
+
+function checkMouseUpAndDown(cell) {
+  cell.addEventListener("mousedown", (event) => {
     if (event.button === 0) {
       isRightMouseDown = true;
       event.preventDefault();
     }
   });
 
-  gridColumn.addEventListener("mouseup", () => {
+  cell.addEventListener("mouseup", () => {
     isRightMouseDown = false;
   });
+}
 
-  gridColumn.addEventListener("mousemove", (event) => {
+function color(cell) {
+  checkMouseUpAndDown(cell);
+
+  cell.addEventListener("mousemove", (event) => {
     if (isRightMouseDown) {
       event.target.style.backgroundColor = colorPicker.value;
     }
   });
 }
 
-function changeCellColor(event) {
-  const cell = event.target;
-  cell.style.backgroundColor = colorPicker.value;
+function erase(cell) {
+  checkMouseUpAndDown(cell);
+
+  cell.addEventListener("mousemove", (event) => {
+    if (isRightMouseDown) {
+      event.target.style.backgroundColor = "#d9d9d9";
+    }
+  });
+}
+
+eraseBtn.addEventListener("click", () => {
+  erase(gridColumn);
+});
+
+colorBtn.addEventListener("click", () => {
+  color(gridColumn);
+});
+
+clearBtn.addEventListener("click", () => {
+  gridColumn.innerHTML = "";
+  gridRow.innerHTML = "";
+  createGridSize();
+});
+
+raindowBtn.addEventListener("click", () => {
+  checkMouseUpAndDown(gridColumn);
+
+  gridColumn.addEventListener("mousemove", (event) => {
+    if (isRightMouseDown) {
+      event.target.style.backgroundColor = randomColor();
+    }
+  });
+});
+
+function randomColor() {
+  let color = Math.floor(Math.random() * 16777215).toString(16);
+  return "#" + color;
 }
