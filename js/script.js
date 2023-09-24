@@ -19,7 +19,7 @@ gridColumn.style.display = "flex";
 
 grid.append(gridColumn);
 
-let size = 64;
+let size = 16;
 createGridSize();
 
 function gridSize() {
@@ -35,10 +35,10 @@ let isRightMouseDown = false;
 function createGridSize() {
   gridColumn.innerHTML = "";
   gridRow.innerHTML = "";
-  let divHeight = 550 / size;
-  let divWidth = 550 / size;
+  let divHeight = 300 / size;
+  let divWidth = 300 / size;
   let div = document.createElement("div");
-  div.classList.add("clone");
+  div.style.border = "1px solid black";
   div.style.width = `${divWidth}px`;
   div.style.height = `${divHeight}px`;
 
