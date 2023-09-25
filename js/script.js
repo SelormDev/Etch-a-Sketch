@@ -14,6 +14,11 @@ const gridColumn = document.createElement("div");
 
 sizeBtn.addEventListener("click", gridSize);
 
+let mobile = window.matchMedia("(max-width: 480px)"),
+  medium = window.matchMedia("(max-width: 768px)"),
+  large = window.matchMedia("(max-width: 1024px)"),
+  xlarge = window.matchMedia("(min-width: 1025px)");
+
 // gridColumn.append(gridRow);
 gridColumn.style.display = "flex";
 
@@ -33,12 +38,25 @@ function gridSize() {
 let isRightMouseDown = false;
 
 function createGridSize() {
+  let width;
+
+  if (mobile.matches) {
+    width = 280;
+  } else if (medium.matches) {
+    width = 300;
+  } else if (large.matches) {
+    width = 550;
+  } else if (xlarge.matches) {
+    width = 550;
+  } else {
+    width = 550;
+  }
+
   gridColumn.innerHTML = "";
   gridRow.innerHTML = "";
-  let divHeight = 300 / size;
-  let divWidth = 300 / size;
+  let divHeight = width / size;
+  let divWidth = width / size;
   let div = document.createElement("div");
-  div.style.border = "1px solid black";
   div.style.width = `${divWidth}px`;
   div.style.height = `${divHeight}px`;
 
