@@ -1,6 +1,6 @@
 # Etch-a-Sketch Solution - Odin Project
 
-Welcome to the Etch-a-Sketch solution repository for The Odin Project's Etch-a-Sketch exercise. This repository contains a working implementation of the Etch-a-Sketch web application using HTML, CSS, and JavaScript. Below, you'll find an overview of the project's structure and how to use the solution.
+Welcome to the Etch-a-Sketch solution repository for The Odin Project's Etch-a-Sketch exercise. This repository contains a working implementation of the Etch-a-Sketch web application using HTML, CSS, and JavaScript. Below, you'll find an overview of the project's structure and how to use the solution. [Take a look.](https://selormdev.me/Etch-a-Sketch/)
 
 ## Project Overview
 
